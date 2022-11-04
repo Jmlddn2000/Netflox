@@ -1,0 +1,9 @@
+GET http://localhost:5000/kategori
+
+###
+
+GET http://localhost:5000/film
+
+###
+
+GET http://localhost:5000/artis
