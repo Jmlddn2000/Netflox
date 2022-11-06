@@ -1,18 +1,27 @@
 import express from "express"
 import {
-    getKategori1,
+    getKategori,
     getfilm,
     getartis,
     getIdFilm,
     addFilm,
-    deletFilm
+    deletFilm,
+    getIdKategori,
+    addKategori,
+    deleteKategori
 } 
 from "../controllers/Controllers.js"
 
 const router = express.Router();
 
+
 // kategori
-router.get('/kategori1',getKategori1)
+router.get('/kategori',getKategori)
+router.get('/kategori/:id',getIdKategori)
+router.post('/kategori',addKategori)
+router.delete('/kategori/:id',deleteKategori)
+
+
 
 // artis
 router.get('/artis',getartis)

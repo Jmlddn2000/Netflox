@@ -2,23 +2,22 @@
 GET http://localhost:5000/film
 
 ###
-GET http://localhost:5000/film/1
+GET http://localhost:5000/film/7
 
 ###
 POST  http://localhost:5000/film
 Content-Type: application/json
 
 {
-    "id_film"  : 2,
     "id_kategori": 1,
-    "title" : "bangHAFIZ",
+    "title" : "kjkjkjkj",
     "durasi" : "1h 55m",
     "umur" : 10,
     "tahun_terbit" : 2019,
-    "overview" : "bangHAFIZ",
-    "descripsi" : "bangHAFIZ",
-    "garis_cerita" : "bangHAFIZ",
-    "gambar" : "bangHAFIZ"
+    "overview" : "adaw",
+    "descripsi" : "adaw",
+    "garis_cerita" : "adaw",
+    "gambar" : "bangHadawdAFIZ"
 }
 
 ### 
@@ -33,5 +32,18 @@ GET http://localhost:5000/artis
 
 ###
 
-GET http://localhost:5000/kategori1
+GET http://localhost:5000/kategori
 
+###
+GET http://localhost:5000/kategori/2
+
+###
+POST  http://localhost:5000/kategori
+Content-Type: application/json
+
+{
+    "nama_kategori": "Drama"
+}
+
+### 
+DELETE http://localhost:5000/kategori/1
