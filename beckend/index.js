@@ -15,10 +15,4 @@ app.use(express.json());
 
 app.use(UserRoute)
 
-app.get('/kategori', (req , res) => {
-    db.query("SELECT * FROM kategori", (err, result) => {
-        response(200, result, "get all data from kategori", res )
-    })
-})
-
 app.listen(5000, ()=> console.log('server up and running'))

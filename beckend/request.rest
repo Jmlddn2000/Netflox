@@ -1,9 +1,37 @@
-GET http://localhost:5000/kategori
-
-###
-
+# film
 GET http://localhost:5000/film
 
 ###
+GET http://localhost:5000/film/2
+
+###
+POST  http://localhost:5000/film
+Content-Type: application/json
+
+{
+    "id_film"  : 4,
+    "id_kategori": 1,
+    "title" : "bangbang",
+    "durasi" : "1h 55m",
+    "umur" : 10,
+    "tahun_terbit" : 2019,
+    "overview" : "bangbang",
+    "descripsi" : "bangbang",
+    "garis_cerita" : "bangbang",
+    "gambar" : "bangbang"
+}
+
+### 
+DELETE http://localhost:5000/film/2
+
+# artis
+###
 
 GET http://localhost:5000/artis
+
+# kategori
+
+###
+
+GET http://localhost:5000/kategori1
+
