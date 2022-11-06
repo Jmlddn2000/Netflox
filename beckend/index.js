@@ -19,6 +19,13 @@ app.get('/kategori', (req , res) => {
     db.query("SELECT * FROM kategori", (err, result) => {
         response(200, result, "get all data from kategori", res )
     })
+
+})
+app.get('/artis', (req , res) => {
+    db.query("SELECT * FROM artis", (err, result) => {
+        response(200, result, "get all data from artis", res )
+    })
+
 })
 
 app.listen(5000, ()=> console.log('server up and running'))

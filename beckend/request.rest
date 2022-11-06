@@ -5,5 +5,19 @@ GET http://localhost:5000/kategori
 GET http://localhost:5000/film
 
 ###
-
+Send Request
 GET http://localhost:5000/artis
+
+###
+Send Request
+GET http://localhost:5000/artis/2
+
+###
+Send Request
+POST http://localhost:5000/artis
+
+###
+Send Request
+DELETE http://localhost:5000/artis/1
+
+
