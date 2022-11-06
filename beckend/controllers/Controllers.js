@@ -1,11 +1,6 @@
 import db from "../config/DATABASE.js"
 import response from '../response.js';
 
-export const getKategori1 = (req, res) => {
-    db.query("SELECT * FROM kategori", (err, result) => {
-        response(200, result, "get all data from kategori", res )
-    })
-}
 
 // film
 export const getfilm = (req, res) => {
@@ -55,3 +50,13 @@ export const getartis = (req, res) => {
         response(200, result, "get all data from kategori", res )
     })
 }
+
+// kategori
+
+export const getKategori1 = (req, res) => {
+    db.query("SELECT * FROM kategori", (err, result) => {
+        response(200, result, "get all data from kategori", res )
+    })
+}
+
+

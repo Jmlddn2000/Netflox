@@ -2,27 +2,27 @@
 GET http://localhost:5000/film
 
 ###
-GET http://localhost:5000/film/2
+GET http://localhost:5000/film/1
 
 ###
 POST  http://localhost:5000/film
 Content-Type: application/json
 
 {
-    "id_film"  : 4,
+    "id_film"  : 2,
     "id_kategori": 1,
-    "title" : "bangbang",
+    "title" : "bangHAFIZ",
     "durasi" : "1h 55m",
     "umur" : 10,
     "tahun_terbit" : 2019,
-    "overview" : "bangbang",
-    "descripsi" : "bangbang",
-    "garis_cerita" : "bangbang",
-    "gambar" : "bangbang"
+    "overview" : "bangHAFIZ",
+    "descripsi" : "bangHAFIZ",
+    "garis_cerita" : "bangHAFIZ",
+    "gambar" : "bangHAFIZ"
 }
 
 ### 
-DELETE http://localhost:5000/film/2
+DELETE http://localhost:5000/film/3
 
 # artis
 ###
