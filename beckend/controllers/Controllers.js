@@ -83,6 +83,8 @@ export const deleteartis = (req, res) => {
 
 
 
+
+
 // kategori
 
 export const getKategori = (req, res) => {

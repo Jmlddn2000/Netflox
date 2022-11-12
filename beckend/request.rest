@@ -2,7 +2,6 @@
 GET http://localhost:5000/film
 
 ###
-<<<<<<< HEAD
 GET http://localhost:5000/film/7
 
 ###
@@ -29,6 +28,22 @@ DELETE http://localhost:5000/film/3
 
 GET http://localhost:5000/artis
 
+###
+
+GET http://localhost:5000/artis/1
+
+###
+POST http://localhost:5000/artis
+Content-Type: application/json
+
+{
+    "nama_lengkap": "jamaluddin",
+    "gambar":"https://images.mubicdn.net/images/cast_member/16571/cache-6265-1652192531/image-w856.jpg?size=240x"
+}
+
+###
+DELETE http://localhost:5000/artis/3
+
 # kategori
 
 ###
@@ -43,26 +58,8 @@ POST  http://localhost:5000/kategori
 Content-Type: application/json
 
 {
-    "nama_kategori": "Drama"
+    "nama_kategori": "Anime"
 }
 
 ### 
 DELETE http://localhost:5000/kategori/1
-=======
-Send Request
-GET http://localhost:5000/artis
-
-###
-Send Request
-GET http://localhost:5000/artis/2
-
-###
-Send Request
-POST http://localhost:5000/artis
-
-###
-Send Request
-DELETE http://localhost:5000/artis/1
-
-
->>>>>>> 73ab245b924df09c5b9dff4ff6dec1874a56ede2
