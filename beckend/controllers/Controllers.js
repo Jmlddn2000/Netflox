@@ -45,11 +45,41 @@ export const deletFilm = (req, res) => {
 
 
 // artis
+
 export const getartis = (req, res) => {
     db.query("SELECT * FROM artis", (err, result) => {
-        response(200, result, "get all data from kategori", res )
+        response(200, result, "get all data from artis", res )
     })
 }
+
+
+
+export const getIdArtis = (req, res) => {
+    db.query("SELECT * FROM artis WHERE id_artis = ?",[req.params.id_artis] , (err, result) => {
+        console.log(result)
+        response(200, result, `get artis id `, res )
+    })
+}
+
+export const addartis = (req, res) => {
+    const sql = [ 
+        req.body.id_artis, 
+        req.body.nama_lengkap, 
+        req.body.gambar
+    ]
+    db.query("INSERT INTO artis(id_artis, nama_lengkap, gambar) VALUES (?,?,?)",sql , (err, result) => {
+        console.log(result)
+        response(200, "", ` ADD ARTIS SUCSESS `, res )
+    })
+}
+
+export const deleteartis = (req, res) => {
+    db.query("DELETE FROM artis WHERE id_artis = ?",[req.params.id_artis] , (err, result) => {
+        console.log(result)
+        response(200, result, `DELETE ARTIS SUCSESS `, res )
+    })
+}
+
 
 
 
@@ -85,6 +115,5 @@ export const deleteKategori = (req, res) => {
         response(200, result, `DELETE KATEGORI SUCSESS `, res )
     })
 }
-
 
 

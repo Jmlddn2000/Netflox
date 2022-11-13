@@ -8,23 +8,20 @@ import {
     deletFilm,
     getIdKategori,
     addKategori,
-    deleteKategori
+    deleteKategori,
+    addartis,
+    getIdArtis,
+    deleteartis
+
 } 
 from "../controllers/Controllers.js"
 
 const router = express.Router();
 
-
-// kategori
 router.get('/kategori',getKategori)
 router.get('/kategori/:id',getIdKategori)
 router.post('/kategori',addKategori)
 router.delete('/kategori/:id',deleteKategori)
-
-
-
-// artis
-router.get('/artis',getartis)
 
 
 // film
@@ -32,6 +29,15 @@ router.get('/film',getfilm)
 router.get('/film/:id_film',getIdFilm)
 router.post('/film',addFilm)
 router.delete('/film/:id_film',deletFilm)
+
+// artis
+router.get('/artis',getartis)
+router.get('/artis/:id_artis', getIdArtis)
+router.post('/artis',addartis)
+router.delete('/artis/:id_artis', deleteartis)
+
+
+
 
 export default router
 

@@ -2,6 +2,7 @@
 GET http://localhost:5000/film
 
 ###
+<<<<<<< HEAD
 GET http://localhost:5000/film/7
 
 ###
@@ -47,3 +48,21 @@ Content-Type: application/json
 
 ### 
 DELETE http://localhost:5000/kategori/1
+=======
+Send Request
+GET http://localhost:5000/artis
+
+###
+Send Request
+GET http://localhost:5000/artis/2
+
+###
+Send Request
+POST http://localhost:5000/artis
+
+###
+Send Request
+DELETE http://localhost:5000/artis/1
+
+
+>>>>>>> 73ab245b924df09c5b9dff4ff6dec1874a56ede2
