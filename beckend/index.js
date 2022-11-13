@@ -1,7 +1,5 @@
 import express from 'express';
 import cors from "cors";
-import db from "./config/DATABASE.js"
-import response from './response.js';
 import bodyParser from 'body-parser';
 // import Route from './route/Route/js'
 import UserRoute from "./route/UserRoute.js"
