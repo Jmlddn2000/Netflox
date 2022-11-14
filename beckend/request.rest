@@ -1,65 +1,28 @@
-# film
-GET http://localhost:5000/film
-
-###
-GET http://localhost:5000/film/7
-
-###
-POST  http://localhost:5000/film
-Content-Type: application/json
-
-{
-    "id_kategori": 1,
-    "title" : "kjkjkjkj",
-    "durasi" : "1h 55m",
-    "umur" : 10,
-    "tahun_terbit" : 2019,
-    "overview" : "adaw",
-    "descripsi" : "adaw",
-    "garis_cerita" : "adaw",
-    "gambar" : "bangHadawdAFIZ"
-}
-
-### 
-DELETE http://localhost:5000/film/3
-
-# artis
-###
-
-GET http://localhost:5000/artis
-
-###
-
-GET http://localhost:5000/artis/1
-
-###
-POST http://localhost:5000/artis
-Content-Type: application/json
-
-{
-    "nama_lengkap": "jamaluddin",
-    "gambar":"https://images.mubicdn.net/images/cast_member/16571/cache-6265-1652192531/image-w856.jpg?size=240x"
-}
-
-###
-DELETE http://localhost:5000/artis/3
-
 # kategori
 
-###
-
-GET http://localhost:5000/kategori
+GET http://localhost:3000/kategori
 
 ###
-GET http://localhost:5000/kategori/2
+GET http://localhost:3000/kategori/637222de356396bb553b67ef
+
 
 ###
-POST  http://localhost:5000/kategori
+POST http://localhost:3000/kategori
 Content-Type: application/json
 
 {
-    "nama_kategori": "Anime"
+    "id" : 5,
+    "nama_kategori" : "Triller"
 }
 
-### 
-DELETE http://localhost:5000/kategori/1
+###
+PATCH http://localhost:3000/kategori/637222de356396bb553b67ef
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "nama_kategori" : "jamal"
+}
+
+###
+DELETE  http://localhost:3000/kategori/637227d21bfa13bace2d0188
