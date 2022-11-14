@@ -26,3 +26,31 @@ Content-Type: application/json
 
 ###
 DELETE  http://localhost:3000/kategori/637227d21bfa13bace2d0188
+
+
+
+# Film Artis
+
+# get film Artis
+###
+GET http://localhost:3000/filmArtis
+
+# tambah film artis
+
+###
+POST http://localhost:3000/filmArtis
+Content-Type: application/json
+
+{
+    "id_film_artis" : 2,
+    "id_film" : 1,
+    "id_artis" : 1
+}
+
+# get By ID Film Artis
+###
+GET http://localhost:3000/filmArtis/63723238356396bb553b6807
+
+###
+DELETE  http://localhost:3000/filmArtis/63723deacfcff8b3b22d4df3
+
