@@ -19,17 +19,10 @@ Content-Type: application/json
 PATCH http://localhost:3000/kategori/637222de356396bb553b67ef
 Content-Type: application/json
 
-<<<<<<< HEAD
-GET http://localhost:5000/artis
-
-
-# kategori
-=======
 {
     "id" : 2,
     "nama_kategori" : "jamal"
 }
->>>>>>> 35ab256f128495bd05b5400d6468ce2e44db8661
 
 ###
 DELETE  http://localhost:3000/kategori/637227d21bfa13bace2d0188
@@ -40,13 +33,7 @@ DELETE  http://localhost:3000/kategori/637227d21bfa13bace2d0188
 
 # get film Artis
 ###
-<<<<<<< HEAD
-GET http://localhost:5000/kategori/8
-=======
 GET http://localhost:3000/filmArtis
-
-# tambah film artis
->>>>>>> 35ab256f128495bd05b5400d6468ce2e44db8661
 
 ###
 POST http://localhost:3000/filmArtis
@@ -77,8 +64,8 @@ POST http://localhost:3000/Artis
 Content-Type: application/json
 
 {
-    "id_artis" : 2,
-    "nama_lengkap" : "dilfaaaaaaaaa",
+    "id_artis" : 1,
+    "nama_lengkap" : "dilf",
     "gambar" : "hgahwuhduwhdwkjankw"
 }
 
@@ -88,7 +75,7 @@ GET http://localhost:3000/Artis/6374cc9dba27e748fa950651
 
 ###
 
-DELETE  http://localhost:3000/Artis/6374d011f27b536f6e119215
+DELETE  http://localhost:3000/Artis/63720382356396bb553b67d6
 
 
 # Film

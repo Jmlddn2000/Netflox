@@ -4,7 +4,7 @@ import Film from "../models/Film_artis.js"
 // get
 export const getFilmArtis = async (req, res) => {
     try{
-        const kategoris = await Film_artis.find()
+        const kategoris = await Film.find()
         res.json(kategoris)
     }catch (error) {
         res.json({messagee: error.messagee})
@@ -15,7 +15,7 @@ export const getFilmArtis = async (req, res) => {
 // get pake id
 export const getByIDfilmArtis = async (req, res) => {
     try{
-        const filmArtisid = await Film_artis.findById(req.params.id_film_artis)
+        const filmArtisid = await Film.findById(req.params.id_film_artis)
         res.json(filmArtisid)
     }catch (error) {
         res.json({messagee: error.messagee})
@@ -25,7 +25,7 @@ export const getByIDfilmArtis = async (req, res) => {
 
 // tambah Film
 export const addFilmArtis = async (req, res) => {
-    const filmArtis = new Film_artis(req.body);
+    const filmArtis = new Film(req.body);
     try{
         const add_FilmArtis = await filmArtis.save();
         res.json(add_FilmArtis)
@@ -49,7 +49,7 @@ export const addFilmArtis = async (req, res) => {
 // Delet Kategori 
 export const deletFilmArtis = async (req, res) => {
     try{
-        const delet_filmArtis = await Film_artis.deleteOne({_id: req.params.id_film_artis})
+        const delet_filmArtis = await Film.deleteOne({_id: req.params.id_film_artis})
         res.json(delet_filmArtis)
     }catch (error) {
         res.json({messagee: error.messagee})
