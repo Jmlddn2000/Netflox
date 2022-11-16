@@ -1,18 +1,24 @@
-import express from 'express';
-import cors from "cors";
-import db from "./config/DATABASE.js"
-import response from './response.js';
-import bodyParser from 'body-parser';
-// import Route from './route/Route/js'
-import UserRoute from "./route/UserRoute.js"
-
+import express from "express"
+import mongoose from "mongoose";
+import route from "./route/route.js";
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.json())
+mongoose.connect("mongodb://127.0.0.1:27017/netflox", {
+   useNewUrlParser : true,
+   useUnifiedTopology : true
+});
+
+const db = mongoose.connection;
+const port = 3000
+
+db.on("error", (error) => console.log(error))
+db.once('open', () => console.log('Database Connected'))
 
 app.use(express.json());
+app.use(route);
 
-app.use(UserRoute)
 
-app.listen(5000, ()=> console.log('server up and running'))
+
+
+
+app.listen(port, () => console.log("server up running")) 

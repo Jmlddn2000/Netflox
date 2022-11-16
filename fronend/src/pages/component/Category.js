@@ -1,9 +1,11 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
+// import axios from 'axios';
+
 import {
     View,
     Text,
     TouchableOpacity,
-    Image,
+    FlatList,
     StyleSheet,
     ScrollView,
     Dimensions
@@ -15,6 +17,17 @@ const {height, width} = Dimensions.get("window");
 
 
 function Category({ navigation, route }) {
+    url = "http://192.168.1.4:5000/kategori1"
+
+    const [datas, setData] = useState()
+
+    useEffect(() => {
+        fetch(url)
+        .then((response) => response.json())
+        .then((data) => setData(data.payload.datas))
+        .catch(err => console.log("error", err))
+    },[])
+
 
     const handleAction = () => {
         console.log(route.data)
@@ -37,63 +50,18 @@ function Category({ navigation, route }) {
                 </Text>
             </View>
 
-            <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
-                <Text style={styles.text} >
-                    Action
-                </Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity style={styles.list_kategori}>
-                <Text style={styles.text}  >
-                    Drama
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.list_kategori}>
-                <Text style={styles.text}  >
-                    Comedy
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.list_kategori}>
-                <Text style={styles.text}  >
-                    Thiler
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.list_kategori}>
-                <Text style={styles.text} >
-                    Biografy
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.list_kategori}>
-                <Text style={styles.text} >
-                    Action
-                </Text>
-            </TouchableOpacity>
-
-
-
-
-
-           {/* <Header />
-            <Text style={{ color: "black", fontSize: 30 }}>
-                ini adalah = {route.params.title}
-            </Text>
-
-            <Text style={{ color: "black", fontSize: 30 }}>
-                ini adalah = {route.params.tahun}
-            </Text>
-
-            <Text style={{ color: "black", fontSize: 30 }}>
-                ini adalah = {route.params.durasi}
-            </Text>
-            <View>
-                <Image style={styles.img} resizeMode={'stretch'} source={{ uri: route.params.image }} />
-            </View> */}
-
-
+            <FlatList
+                    data={datas}
+                    renderItem={({ item, index }) => 
+                            <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
+                                <Text style={styles.text} >
+                                {item.nama_kategori}
+                                </Text>
+                            </TouchableOpacity>
+                    }
+                    keyExtractor={(item) => item.id}
+                />
 
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Text style={{ color: "red", fontSize: 50 }}>
