@@ -8,7 +8,7 @@ import {
     FlatList,
     StyleSheet,
     ScrollView,
-    Dimensions
+    Dimensions,
 } from 'react-native'
 
 import Navbar from './Navbar'
@@ -17,29 +17,21 @@ const {height, width} = Dimensions.get("window");
 
 
 function Category({ navigation, route }) {
-    url = "http://192.168.1.4:5000/kategori1"
 
-    const [datas, setData] = useState()
+    const [datas, setData] = useState(route.params.gendre)
 
-    useEffect(() => {
-        fetch(url)
-        .then((response) => response.json())
-        .then((data) => setData(data.payload.datas))
-        .catch(err => console.log("error", err))
-    },[])
-
-
-    const handleAction = () => {
-        console.log(route.data)
-        navigation.navigate('HalamanCategory', {
-            data : route.params.data
+    const handleAction = (a) => { 
+        datas.map((list) => {
+            navigation.navigate('Halamankategoris',{
+                kategori : datas
+            })
         })
-
+           
     }
 
 
     return (
-        <ScrollView style={{backgroundColor: "black", flex: 1}} >
+        <View horizontal={false}  style={{backgroundColor: "black", flex: 1}} >
             <View>
                 <Navbar navigation={navigation}/>
             </View>
@@ -56,19 +48,14 @@ function Category({ navigation, route }) {
                     renderItem={({ item, index }) => 
                             <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
                                 <Text style={styles.text} >
-                                {item.nama_kategori}
+                                    {item.nama_kategori}
                                 </Text>
                             </TouchableOpacity>
                     }
                     keyExtractor={(item) => item.id}
+                    
                 />
-
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <Text style={{ color: "red", fontSize: 50 }}>
-                    Click mamank
-                </Text>
-            </TouchableOpacity>
-        </ScrollView>
+        </View>
     )
 }
 

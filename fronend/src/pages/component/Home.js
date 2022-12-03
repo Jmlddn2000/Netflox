@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -20,51 +20,51 @@ function Home({ navigation }) {
 
     const NavigateCategory = () => {
 
-        navigation.navigate('Category')
+        navigation.navigate('Category',{
+            data : listData
+        })
 
     }
-    const initialState = [
-        {
-            "id": 1,
-            "Title": "The Lion King",
-            "Year": "2019",
-            "Runtime": "118 min",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
-        },
-        {
-            "id": 2,
-            "Title": "Mowgli: Legend of the Jungle",
-            "Year": "2018",
-            "Runtime": "104 min",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BMjMzODc2NzU5MV5BMl5BanBnXkFtZTgwNTMwMTE3NjM@._V1_SX300.jpg"
-        },
-        {
-            "id": 3,
-            "Title": "Doctor Strange",
-            "Year": "2016",
-            "Runtime": "115 min",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"
-        },
-        {
 
-            "id": 4,
-            "Title": "John Wick",
-            "Year": "2014",
-            "Runtime": "101 min",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"
-        },
-        {
+    useEffect(()=> {
+        fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
+        .then((response) => response.json())
+        .then((data) => setListData(data))
+    },[])
 
-            "id": 5,
-            "Title": "The Notebook",
-            "Year": "2004",
-            "Runtime": "123 min"
-        }
+    useEffect(()=> {
+        fetch('https://easy-snaps-frog.cyclic.app/filmtop')
+        .then((response) => response.json())
+        .then((data) => setTopFilm(data))
+    },[])
 
-    ]
+    // useEffect(() => {
+    //     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setTopFilm(  
+    //                 data.sort((a, b) => {
+    //                     aRating = a.id_film.rating 
+    //                     bRating = b.id_film.rating 
+    //                     console.log(aRating, bRating )
+    //                     if (a > b){
+    //                         return 1;
+    //                     } else if (b > a){
+    //                         return -1;
+    //                     }else{
+    //                         return 0
+    //                     }
+                        
+    //                 })) 
+    //                 // console.log(data)
+    //             })
+    // }, [])
 
-    const [listData, setListData] = useState(initialState)
-    const [img, setImg] = useState()
+
+
+    const [listData, setListData] = useState()
+    const [topfilm, setTopFilm] = useState()
+
 
     return (
         <ScrollView style={{ backgroundColor: "black" }}>
@@ -91,53 +91,74 @@ function Home({ navigation }) {
                     data={listData}
                     renderItem={({ item, index }) =>
                         <Item
-                            title={item.Title}
-                            tahun={item.Year}
-                            durasi={item.Runtime}
-                            image={item.Poster}
+                            title={item.id_film.title}
+                            tahun={item.id_film.tahun_terbit}
+                            umur={item.id_film.umur}
+                            overview={item.id_film.overview}
+                            descripsi={item.id_film.descripsi}
+                            garis_cerita={item.id_film.garis_cerita}
+                            durasi={item.id_film.durasi}
+                            image={item.id_film.gambar}
+                            rating = {item.id_film.rating}
+                            gendre = {item.id_film.gendre}
+                            gambar_artis = {item.id_artis.gambar}
+                            // artis_artis = {item.id_artis.id_film_artis}
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item.id_film_artis}
                     horizontal={true}
                 />
 
                 <Text style={styles.Title_Bagian}>Top Film</Text>
 
                 <FlatList
-                    data={listData}
+                    data={topfilm}
                     renderItem={({ item, index }) =>
                         <Item
-                            title={item.Title}
-                            tahun={item.Year}
-                            durasi={item.Runtime}
-                            image={item.Poster}
+                            title={item.title}
+                            tahun={item.tahun_terbit}
+                            umur={item.umur}
+                            overview={item.overview}
+                            descripsi={item.descripsi}
+                            garis_cerita={item.garis_cerita}
+                            durasi={item.durasi}
+                            image={item.gambar}
+                            rating = {item.rating}
+                            gendre = {item.gendre}
+                            // gambar_artis = {item.id_artis.gambar}
+                        // gambar_artis = {item.id_artis.gambar}
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item.id_film_artis}
                     horizontal={true}
                 />
 
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={styles.Title_Bagian}>More To Explore</Text>
-                    <TouchableOpacity onPress={NavigateCategory}>
-                        <Text style={styles.SeeAll}>See All</Text>
-                    </TouchableOpacity>
+
                 </View>
 
                 <FlatList
                     data={listData}
                     renderItem={({ item, index }) =>
                         <Item
-                            title={item.Title}
-                            tahun={item.Year}
-                            durasi={item.Runtime}
-                            image={item.Poster}
+                            title={item.id_film.title}
+                            tahun={item.id_film.tahun_terbit}
+                            umur={item.id_film.umur}
+                            overview={item.id_film.overview}
+                            descripsi={item.id_film.descripsi}
+                            garis_cerita={item.id_film.garis_cerita}
+                            durasi={item.id_film.durasi}
+                            image={item.id_film.gambar}
+                            rating = {item.id_film.rating}
+                            gendre = {item.id_film.gendre}
+                            gambar_artis = {item.id_artis.gambar}
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item.id_film_artis}
                     horizontal={true}
                 />
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -15,7 +15,7 @@ import IconStar2 from '../asset/IconStar2'
 
 
 
-function Item({ title, tahun, durasi, image, navigation }) {
+function Item({ title, tahun, durasi, image, navigation, overview, descripsi, garis_cerita, umur, rating, gendre, gambar_artis  }) {
 
     const handleInput = () => {
 
@@ -24,6 +24,13 @@ function Item({ title, tahun, durasi, image, navigation }) {
             tahun: tahun,
             durasi: durasi,
             image: image,
+            overview: overview,
+            descripsi : descripsi,
+            garis_cerita : garis_cerita,
+            umur : umur,
+            rating : rating,
+            gendre : gendre,
+            gambar_artis : gambar_artis
         })
 
     }
@@ -36,7 +43,7 @@ function Item({ title, tahun, durasi, image, navigation }) {
                         <Text numberOfLines={1} style={{ color: "white", width: "100%" }}>{title}</Text>
                         <Text style={{ color: "white", fontSize: 10, alignSelf: 'flex-end' }}>
                             <IconStar2 fill="yellow" width={10} height={10} />
-                            8.6
+                            {rating}
                         </Text>
                     </View>
                 </TouchableOpacity>
