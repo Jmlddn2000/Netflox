@@ -16,6 +16,8 @@ export const { height, width } = Dimensions.get('window');
 
 function Description_film({ navigation, route }) {
 
+
+
   const handleInput = () => {
     navigation.navigate('Home');
   };

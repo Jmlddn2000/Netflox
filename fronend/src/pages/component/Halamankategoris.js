@@ -16,13 +16,38 @@ const { height, width } = Dimensions.get("window");
 
 function Halamankategoris({ navigation, route }) {
 
-    useEffect(()=> {
-        fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
-        .then((response) => response.json())
-        .then((data) => setListData(data))
-    },[])
+    console.log("ini id nya",route.params.id)
+
+//     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
+//     .then(res => res.json())
+//     .then((data) => { data.map((list) => { 
+
+//         console.log(list)
+//     //     id = route.params.id
+//     //     if(list.id_film.id_kategori == id){
+//     //         setListData(list)
+//     //         console.log(list)
+//     // }
+// }) })
+    
+
+    fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
+    .then(res => res.json())
+    .then(data => {
+         data.sort((a, b) => {
+             return a.id_film.rating > b.id_film.rating ? -1 : 1; 
+             
+         });
+         setTopFilm(data)
+    })
+    .catch((error) => {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+        throw error;
+    })
 
     const [listData, setListData] = useState()
+    const [topfilm, setTopFilm] = useState()
+
     return (
         
         <View style={{backgroundColor: "black", flex: 1 }}>
@@ -58,7 +83,7 @@ function Halamankategoris({ navigation, route }) {
             <Text style={styles.Title_Bagian}>Top Film</Text>
 
         <FlatList
-                data={listData}
+                data={topfilm}
                 renderItem={({ item, index }) =>
                     <Item
                         title={item.id_film.title}

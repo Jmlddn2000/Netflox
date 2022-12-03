@@ -18,12 +18,24 @@ const {height, width} = Dimensions.get("window");
 
 function Category({ navigation, route }) {
 
-    const [datas, setData] = useState(route.params.gendre)
+    useEffect(()=> {
+        fetch('https://easy-snaps-frog.cyclic.app/kategori')
+        .then((response) => response.json())
+        .then((data) => setData(data))
+        .catch((error) => {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            throw error;
+        })
+        ;
+    },[])
+
+    const [datas, setData] = useState()
 
     const handleAction = () => { 
+        
         datas.map((list) => {
             navigation.navigate('Halamankategoris',{
-                kategori : datas
+                id : list._id
             })
         })
            
@@ -48,6 +60,7 @@ function Category({ navigation, route }) {
                     renderItem={({ item, index }) => 
                             <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
                                 <Text style={styles.text} >
+                                    {item.id}
                                     {item.nama_kategori}
                                 </Text>
                             </TouchableOpacity>

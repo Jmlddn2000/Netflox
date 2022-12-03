@@ -30,13 +30,27 @@ function Home({ navigation }) {
         fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
         .then((response) => response.json())
         .then((data) => setListData(data))
+        .catch(() => {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            throw error;
+        })
+        
     },[])
 
-    useEffect(()=> {
-        fetch('https://easy-snaps-frog.cyclic.app/filmtop')
-        .then((response) => response.json())
-        .then((data) => setTopFilm(data))
-    },[])
+    fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
+    .then(res => res.json())
+    .then(data => {
+         data.sort((a, b) => {
+             return a.id_film.rating > b.id_film.rating ? -1 : 1; 
+             
+         });
+         setTopFilm(data)
+    })
+    .catch(() => {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+        throw error;
+    })
+ 
 
 
     const [listData, setListData] = useState()
@@ -94,21 +108,21 @@ function Home({ navigation }) {
                     data={topFilm}
                     renderItem={({ item, index }) =>
                         <Item
-                        title={item.title}
-                        tahun={item.tahun_terbit}
-                        umur={item.umur}
-                        overview={item.overview}
-                        descripsi={item.descripsi}
-                        garis_cerita={item.garis_cerita}
-                        durasi={item.durasi}
-                        image={item.gambar}
-                        rating = {item.rating}
-                        gendre = {item.gendre}
-                        // gambar_artis = {item.id_artis.gambar}
+                        title={item.id_film.title}
+                        tahun={item.id_film.tahun_terbit}
+                        umur={item.id_film.umur}
+                        overview={item.id_film.overview}
+                        descripsi={item.id_film.descripsi}
+                        garis_cerita={item.id_film.garis_cerita}
+                        durasi={item.id_film.durasi}
+                        image={item.id_film.gambar}
+                        rating = {item.id_film.rating}
+                        gendre = {item.id_film.gendre}
+                        gambar_artis = {item.id_artis.gambar}
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id_film}
+                    keyExtractor={(item) => item.id_film_artis}
                     horizontal={true}
                 />
 

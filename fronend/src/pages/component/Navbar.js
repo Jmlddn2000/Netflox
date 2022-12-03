@@ -14,19 +14,8 @@ const { height, width } = Dimensions.get("window");
 
 function Navbar({ navigation, data }) {
 
-    const [listDatakategori, setListDatakategori] = useState()
-
-
-    useEffect(()=> {
-        fetch('https://easy-snaps-frog.cyclic.app/kategori')
-        .then((response) => response.json())
-        .then((data) => setListDatakategori(data));
-    },[])
-
     const handleCategory = () => {
-        navigation.navigate('Category',{
-            gendre : listDatakategori
-        })
+        navigation.navigate('Category')
         
     }
 
