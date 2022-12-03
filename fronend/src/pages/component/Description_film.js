@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -5,6 +6,7 @@ import {
   ScrollView,
   Image,
   Dimensions,
+  TextInput
 } from 'react-native';
 import Navbar from './Navbar';
 import IconStar2 from '../asset/IconStar2'
@@ -13,17 +15,24 @@ import IconStar2 from '../asset/IconStar2'
 export const { height, width } = Dimensions.get('window');
 
 function Description_film({ navigation, route }) {
+
+  useEffect(()=> {
+    fetch('https://easy-snaps-frog.cyclic.app/filmtop')
+    .then((response) => response.json())
+    .then((data) => setTopFilm(data))
+},[])
+
   const handleInput = () => {
     navigation.navigate('Home');
   };
-
+  
   return (
     <ScrollView style={{ backgroundColor: 'black' }}>
       <View>
         <Navbar navigation={navigation} />
       </View>
 
-      <Text style={styles.title}>The Lion King</Text>
+      <Text style={styles.title}>{route.params.title}</Text>
 
       <View>
         <Image
@@ -51,7 +60,7 @@ function Description_film({ navigation, route }) {
               paddingHorizontal: 40,
               marginRight: width / 10,
             }}>
-            Genre
+            {route.params.gendre}
           </Text>
         </View>
 
@@ -62,21 +71,25 @@ function Description_film({ navigation, route }) {
               fontSize: 13,
               marginLeft: 5,
               marginRight: 20,
+              fontWeight: 'bold'
             }}>
             2022
           </Text>
 
           <Text
             style={{
-              color: 'white',
+              color: '#FF9900',
               marginRight: 40,
+              marginLeft: 30,
+              fontWeight: 'bold'
+
             }}>
-            18+
+            {route.params.umur}
           </Text>
 
-          <Text style={{ color: "white", fontSize: 13, alignSelf: 'flex-end',  }}>
+          <Text style={{ color: "white", fontSize: 13, alignSelf: 'flex-end', fontWeight: 'bold'  }}>
             <IconStar2 fill="yellow" width={10} height={10} />
-            8.6
+            {route.params.rating}
           </Text>
         </View>
       </View>
@@ -94,81 +107,17 @@ function Description_film({ navigation, route }) {
             marginTop: 20,
             lineHeight: 20,
           }}>
-          Doctor Strange teams up with a mysterious teenage girl from his dreams
-          who can travel across multiverses, to battle multiple threats,
-          including other-universe versions of himself, which threaten to wipe
-          out millions across the multiverse. They seek help from Wanda the
-          Scarlet Witch, Wong and others.
+          {route.params.descripsi}
         </Text>
       </View>
 
-      <View style={{ marginVertical: 30 }}>
-        <Text style={styles.Title_Bagian}>Top Cast</Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginBottom: 20,
-            marginTop: 20,
-          }}>
-          <View style={{ flexDirection: 'row' }}>
-            <View>
-              <Image
-                style={styles.Image_Cast}
-                source={require('../img/Aktor.png')}
-              />
-            </View>
+      <View>
+      <Text style={styles.Title_Bagian}>CAST</Text>
 
-            <View>
-              <Text style={styles.Nama_Asli}>Nama Asli</Text>
-              <Text style={styles.Nama_Pemeran}>Nama Pemeran</Text>
-            </View>
-          </View>
-
-          <View style={{ flexDirection: 'row' }}>
-            <View>
-              <Image
-                style={styles.Image_Cast}
-                source={require('../img/Aktor.png')}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.Nama_Asli}>Nama Asli</Text>
-              <Text style={styles.Nama_Pemeran}>Nama Pemeran</Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <View style={{ flexDirection: 'row' }}>
-            <View>
-              <Image
-                style={styles.Image_Cast}
-                source={require('../img/Aktor.png')}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.Nama_Asli}>Nama Asli</Text>
-              <Text style={styles.Nama_Pemeran}>Nama Pemeran</Text>
-            </View>
-          </View>
-
-          <View style={{ flexDirection: 'row' }}>
-            <View>
-              <Image
-                style={styles.Image_Cast}
-                source={require('../img/Aktor.png')}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.Nama_Asli}>Nama Asli</Text>
-              <Text style={styles.Nama_Pemeran}>Nama Pemeran</Text>
-            </View>
-          </View>
-        </View>
+        <Image
+          style={styles.Image_Cast}
+          source={{ uri: route.params.gambar_artis }}
+        />
       </View>
 
       <View style={{ paddingBottom: 50 }}>
@@ -184,13 +133,10 @@ function Description_film({ navigation, route }) {
             marginTop: 20,
             lineHeight: 20,
           }}>
-          Doctor Strange teams up with a mysterious teenage girl from his dreams
-          who can travel across multiverses, to battle multiple threats,
-          including other-universe versions of himself, which threaten to wipe
-          out millions across the multiverse. They seek help from Wanda the
-          Scarlet Witch, Wong and others.
+          {route.params.garis_cerita}
         </Text>
       </View>
+
     </ScrollView>
   );
 }
@@ -224,10 +170,12 @@ const styles = StyleSheet.create({
     paddingLeft: width / 20,
   },
   Image_Cast: {
-    width: width / 10,
-    height: height / 20,
-    borderRadius: 50,
-    marginRight: 10,
+    width: width / 5,
+    height: height / 5,
+    borderRadius: 10,
+    marginTop: 20,
+    marginLeft: 50,
+    backgroundColor: "white"
   },
   Nama_Asli: {
     color: 'white',

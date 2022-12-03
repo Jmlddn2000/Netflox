@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import {
     View,
     StyleSheet,
@@ -14,11 +14,20 @@ const { height, width } = Dimensions.get("window");
 
 function Navbar({ navigation, data }) {
 
-    const handleCategory = () => {
+    const [listDatakategori, setListDatakategori] = useState()
 
+
+    useEffect(()=> {
+        fetch('https://easy-snaps-frog.cyclic.app/kategori')
+        .then((response) => response.json())
+        .then((data) => setListDatakategori(data));
+    },[])
+
+    const handleCategory = () => {
         navigation.navigate('Category',{
-            data : data
+            gendre : listDatakategori
         })
+        
     }
 
     const handleHome = () => {
