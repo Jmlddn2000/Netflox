@@ -16,12 +16,6 @@ export const { height, width } = Dimensions.get('window');
 
 function Description_film({ navigation, route }) {
 
-  useEffect(()=> {
-    fetch('https://easy-snaps-frog.cyclic.app/filmtop')
-    .then((response) => response.json())
-    .then((data) => setTopFilm(data))
-},[])
-
   const handleInput = () => {
     navigation.navigate('Home');
   };

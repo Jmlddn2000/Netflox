@@ -38,8 +38,10 @@ function Home({ navigation }) {
         .then((data) => setTopFilm(data))
     },[])
 
+
     const [listData, setListData] = useState()
-    const [topfilm, setTopFilm] = useState()
+    const [topFilm, setTopFilm] = useState()
+
 
 
     return (
@@ -89,20 +91,19 @@ function Home({ navigation }) {
                 <Text style={styles.Title_Bagian}>Top Film</Text>
 
                 <FlatList
-                    data={topfilm}
+                    data={topFilm}
                     renderItem={({ item, index }) =>
                         <Item
-                            title={item.title}
-                            tahun={item.tahun_terbit}
-                            umur={item.umur}
-                            overview={item.overview}
-                            descripsi={item.descripsi}
-                            garis_cerita={item.garis_cerita}
-                            durasi={item.durasi}
-                            image={item.gambar}
-                            rating = {item.rating}
-                            gendre = {item.gendre}
-                            // gambar_artis = {item.id_artis.gambar}
+                        title={item.title}
+                        tahun={item.tahun_terbit}
+                        umur={item.umur}
+                        overview={item.overview}
+                        descripsi={item.descripsi}
+                        garis_cerita={item.garis_cerita}
+                        durasi={item.durasi}
+                        image={item.gambar}
+                        rating = {item.rating}
+                        gendre = {item.gendre}
                         // gambar_artis = {item.id_artis.gambar}
                             navigation={navigation}
                         />}

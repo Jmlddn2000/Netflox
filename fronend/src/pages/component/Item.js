@@ -15,7 +15,7 @@ import IconStar2 from '../asset/IconStar2'
 
 
 
-function Item({ title, tahun, durasi, image, navigation, overview, descripsi, garis_cerita, umur, rating, gendre, gambar_artis  }) {
+function Item({ title, tahun, durasi, image, navigation, overview, descripsi, garis_cerita, umur, rating, gendre, gambar_artis, key  }) {
 
     const handleInput = () => {
 
@@ -39,7 +39,7 @@ function Item({ title, tahun, durasi, image, navigation, overview, descripsi, ga
             <View style={styles.slidefilm}>
                 <TouchableOpacity onPress={handleInput}>
                     <Image style={styles.img} resizeMode={'stretch'} source={{ uri: image }} />
-                    <View style={{ backgroundColor: "#181818", padding: 5 }}>
+                    <View style={{ backgroundColor: "#181818", padding: 5 }} >
                         <Text numberOfLines={1} style={{ color: "white", width: "100%" }}>{title}</Text>
                         <Text style={{ color: "white", fontSize: 10, alignSelf: 'flex-end' }}>
                             <IconStar2 fill="yellow" width={10} height={10} />
