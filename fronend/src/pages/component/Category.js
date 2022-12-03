@@ -20,7 +20,7 @@ function Category({ navigation, route }) {
 
     const [datas, setData] = useState(route.params.gendre)
 
-    const handleAction = (a) => { 
+    const handleAction = () => { 
         datas.map((list) => {
             navigation.navigate('Halamankategoris',{
                 kategori : datas

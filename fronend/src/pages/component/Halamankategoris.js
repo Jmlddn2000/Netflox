@@ -10,7 +10,6 @@ import {
     ScrollView
 } from 'react-native'
 import Navbar from './Navbar';
-import Item_Gendre from './Item_Gendre';
 import Item from './Item';
 const { height, width } = Dimensions.get("window");
 
@@ -34,10 +33,11 @@ function Halamankategoris({ navigation, route }) {
 
             <Text style={styles.Title_Bagian}>Featured today</Text>
 
-            <FlatList
+            {/* <FlatList
                 data={listData}
                 renderItem={({ item, index }) =>
                     <Item
+                        key={item.id_film_artis}
                         title={item.id_film.title}
                         tahun={item.id_film.tahun_terbit}
                         umur={item.id_film.umur}
@@ -54,14 +54,15 @@ function Halamankategoris({ navigation, route }) {
 
                 keyExtractor={(item) => item.id_film_artis}
                 horizontal={true}
-            />
+            /> */}
 
             <Text style={styles.Title_Bagian}>Top Film</Text>
 
-            <FlatList
+            {/* <FlatList
                 data={listData}
                 renderItem={({ item, index }) =>
                     <Item
+                        key={item.id_film_artis}
                         title={item.id_film.title}
                         tahun={item.id_film.tahun_terbit}
                         umur={item.id_film.umur}
@@ -77,8 +78,8 @@ function Halamankategoris({ navigation, route }) {
                     />}
 
                 keyExtractor={(item) => item.id_film_artis}
-                horizontal={true}
-            />
+                horizontal={true} */}
+            {/* /> */}
 
         </View>
 

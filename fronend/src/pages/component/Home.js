@@ -38,30 +38,6 @@ function Home({ navigation }) {
         .then((data) => setTopFilm(data))
     },[])
 
-    // useEffect(() => {
-    //     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setTopFilm(  
-    //                 data.sort((a, b) => {
-    //                     aRating = a.id_film.rating 
-    //                     bRating = b.id_film.rating 
-    //                     console.log(aRating, bRating )
-    //                     if (a > b){
-    //                         return 1;
-    //                     } else if (b > a){
-    //                         return -1;
-    //                     }else{
-    //                         return 0
-    //                     }
-                        
-    //                 })) 
-    //                 // console.log(data)
-    //             })
-    // }, [])
-
-
-
     const [listData, setListData] = useState()
     const [topfilm, setTopFilm] = useState()
 
@@ -131,7 +107,7 @@ function Home({ navigation }) {
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id_film_artis}
+                    keyExtractor={(item) => item.id_film}
                     horizontal={true}
                 />
 
