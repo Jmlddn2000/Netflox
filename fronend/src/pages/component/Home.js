@@ -30,7 +30,7 @@ function Home({ navigation }) {
         fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
         .then((response) => response.json())
         .then((data) => setListData(data))
-        .catch(() => {
+        .catch((error) => {
             console.log('There has been a problem with your fetch operation: ' + error.message);
             throw error;
         })
@@ -46,7 +46,7 @@ function Home({ navigation }) {
          });
          setTopFilm(data)
     })
-    .catch(() => {
+    .catch((error) => {
         console.log('There has been a problem with your fetch operation: ' + error.message);
         throw error;
     })
@@ -98,7 +98,7 @@ function Home({ navigation }) {
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id_film_artis}
+                    keyExtractor={(item) => item.id_film.title}
                     horizontal={true}
                 />
 
@@ -149,7 +149,7 @@ function Home({ navigation }) {
                             navigation={navigation}
                         />}
 
-                    keyExtractor={(item) => item.id_film_artis}
+                    keyExtractor={(item) => item.id_film.id_film}
                     horizontal={true}
                 />
 

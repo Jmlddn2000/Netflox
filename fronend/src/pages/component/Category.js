@@ -59,9 +59,8 @@ function Category({ navigation, route }) {
                     data={datas}
                     renderItem={({ item, index }) => 
                             <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
-                                <Text style={styles.text} >
-                                    {item.id}
-                                    {item.nama_kategori}
+                                <Text style={styles.text}> 
+                                {item.nama_kategori}
                                 </Text>
                             </TouchableOpacity>
                     }

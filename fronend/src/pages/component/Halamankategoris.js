@@ -29,6 +29,17 @@ function Halamankategoris({ navigation, route }) {
 //     //         console.log(list)
 //     // }
 // }) })
+
+useEffect(()=> {
+    fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
+    .then((response) => response.json())
+    .then((data) => setListData(data))
+    .catch((error) => {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+        throw error;
+    })
+    
+},[])
     
 
     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
@@ -76,7 +87,7 @@ function Halamankategoris({ navigation, route }) {
                         navigation={navigation}
                     />}
 
-                keyExtractor={(item) => item.id_film_artis}
+                keyExtractor={(item) => item.id_film.rating}
                 horizontal={true}
             /> 
 
@@ -100,7 +111,7 @@ function Halamankategoris({ navigation, route }) {
                         navigation={navigation}
                     />}
 
-                keyExtractor={(item) => item.id_film_artis}
+                keyExtractor={(item) => item._id}
                 horizontal={true} 
          /> 
 
