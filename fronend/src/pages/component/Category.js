@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import Navbar from './Navbar'
+import Item_Gendre from './Item_Gendre'
 
 const {height, width} = Dimensions.get("window");
 
@@ -22,25 +23,9 @@ function Category({ navigation, route }) {
         fetch('https://easy-snaps-frog.cyclic.app/kategori')
         .then((response) => response.json())
         .then((data) => setData(data))
-        .catch((error) => {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-            throw error;
-        })
-        ;
     },[])
 
     const [datas, setData] = useState()
-
-    const handleAction = () => { 
-        
-        datas.map((list) => {
-            navigation.navigate('Halamankategoris',{
-                id : list._id
-            })
-        })
-           
-    }
-
 
     return (
         <View horizontal={false}  style={{backgroundColor: "black", flex: 1}} >
@@ -58,11 +43,12 @@ function Category({ navigation, route }) {
             <FlatList
                     data={datas}
                     renderItem={({ item, index }) => 
-                            <TouchableOpacity onPress={handleAction} style={styles.list_kategori}>
-                                <Text style={styles.text}> 
-                                {item.nama_kategori}
-                                </Text>
-                            </TouchableOpacity>
+                            <Item_Gendre
+                               
+                                id = {item._id}
+                                nama = {item.nama_kategori}
+                                navigation = {navigation}
+                            />
                     }
                     keyExtractor={(item) => item.id}
                     
@@ -76,19 +62,6 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
 
-    },
-    list_kategori : {
-        borderColor: "#FF9900",
-        borderWidth: 1,
-        alignItems: "center",
-        marginHorizontal: 40, 
-        marginVertical: 15, 
-        padding: 30, 
-    },
-    text : {
-        color: 'white',
-        fontSize: 20,
-        fontWeight:'bold',
     },
     title_Categori : {
         color: "white", 

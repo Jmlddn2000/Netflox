@@ -16,32 +16,32 @@ const { height, width } = Dimensions.get("window");
 
 function Halamankategoris({ navigation, route }) {
 
-    console.log("ini id nya",route.params.id)
-
-//     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
-//     .then(res => res.json())
-//     .then((data) => { data.map((list) => { 
-
-//         console.log(list)
-//     //     id = route.params.id
-//     //     if(list.id_film.id_kategori == id){
-//     //         setListData(list)
-//     //         console.log(list)
-//     // }
-// }) })
-
 useEffect(()=> {
-    fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
-    .then((response) => response.json())
-    .then((data) => setListData(data))
-    .catch((error) => {
-        console.log('There has been a problem with your fetch operation: ' + error.message);
-        throw error;
-    })
-    
-},[])
-    
+    fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
+    .then(res => res.json())
+    .then((data) => { data.map((list) => { 
+        id = route.params.id
+        if(list.id_film.id_kategori == id){
+            setListData([list])
+        }        
+    }
+    ) 
+    // setListData(data)
+}
 
+)
+},[])
+
+
+// useEffect(()=> {
+//     fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
+//     .then((response) => response.json())
+//     .then((data) => setListData(data))
+
+    
+// },[])
+    
+useEffect(()=> {
     fetch(`https://easy-snaps-frog.cyclic.app/filmArtis`)
     .then(res => res.json())
     .then(data => {
@@ -51,10 +51,7 @@ useEffect(()=> {
          });
          setTopFilm(data)
     })
-    .catch((error) => {
-        console.log('There has been a problem with your fetch operation: ' + error.message);
-        throw error;
-    })
+},[])
 
     const [listData, setListData] = useState()
     const [topfilm, setTopFilm] = useState()
@@ -66,6 +63,8 @@ useEffect(()=> {
             <View>
                 <Navbar navigation={navigation}/>
             </View>
+
+            
 
             <Text style={styles.Title_Bagian}>Featured today</Text>
 
@@ -87,7 +86,7 @@ useEffect(()=> {
                         navigation={navigation}
                     />}
 
-                keyExtractor={(item) => item.id_film.rating}
+                keyExtractor={(item) => item.id_film}
                 horizontal={true}
             /> 
 
@@ -114,6 +113,7 @@ useEffect(()=> {
                 keyExtractor={(item) => item._id}
                 horizontal={true} 
          /> 
+
 
         </View>
 

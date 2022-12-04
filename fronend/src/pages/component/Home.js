@@ -30,10 +30,6 @@ function Home({ navigation }) {
         fetch('https://easy-snaps-frog.cyclic.app/filmArtis')
         .then((response) => response.json())
         .then((data) => setListData(data))
-        .catch((error) => {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-            throw error;
-        })
         
     },[])
 
@@ -46,10 +42,7 @@ function Home({ navigation }) {
          });
          setTopFilm(data)
     })
-    .catch((error) => {
-        console.log('There has been a problem with your fetch operation: ' + error.message);
-        throw error;
-    })
+    
  
 
 
